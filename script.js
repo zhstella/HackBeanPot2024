@@ -17,7 +17,7 @@ function changeBrightness(factor, sprite) {
     var context = virtCanvas.getContext("2d");
     context.drawImage(sprite,0,0,500,500);
 
-    var imgData = context.getImageDate(0,0,500,500);
+    var imgData = context.getImageData(0,0,500,500);
 
     for (let i=0; i<imgDate.data.length; i+=4) {
         imgData.data[i] = imgData.data[i] * factor;
@@ -66,7 +66,7 @@ function Maze(Width, Height) {
             y: 0,
             x: 1,
             o: "w"
-        }
+        },
         w: {
             y: 0,
             x: -1,
@@ -126,7 +126,121 @@ function Maze(Width, Height) {
                 var direction = dirs[index];
                 var nx = pos.x + modDir[direction].x;
                 var ny = pos.y + modDir[direction].x;
+
+                if (nx >= 0 && nx<width && ny>=0 && ny<height) {
+                    //Check if the title is already visited
+                    if (!mazeMap[nx][ny].visited) {
+                        //Carve through walls from this title to next
+                        mazeMap[pos.x][pos.y][direction] = true;
+                        mazeMap[nx][ny][modDir[direction].o] = true;
+
+                        //Set Currentcell as next cells Prior visited
+                        mazeMap[nx][ny].priorPos = pos;
+                        //Update Cell position to newly visited location
+                        pos = {
+                            x: nx,
+                            y: ny
+                        };
+                        cellsVisited++;
+                        //Recursively call this method on the next tile
+                        move = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!move) {
+                // If it failed to find a direction,
+                // move the current position back to the prior cell and Recall the method.
+                pos = mazeMap[pos.x][pos.y].priorPos;
+            }
+            if (numCells == cellsVisited) {
+                isComp = true;
             }
         }
+    }
+
+    function defineStartEnd() {
+        switch (rand(4)) {
+            case 0:
+                startCoord = {
+                    x: 0,
+                    y: 0
+                };
+                endCoord = {
+                    x: height-1,
+                    y: width-1
+                };
+                break;
+            case 1:
+                startCoord = {
+                    x: 0,
+                    y: width-1
+                };
+                break;
+            case 2:
+                startCoord = {
+                    x: height-1,
+                    y: 0
+                };
+                endCoord = {
+                    x: 0,
+                    y: width-1
+                };
+                break;
+            case 3:
+                startCoord = {
+                    x: height-1,
+                    y: width-1
+                };
+                endCoord = {
+                    x: 0,
+                    y: 0
+                };
+                break;
+        }
+    }
+
+    genMap();
+    defineStartEnd();
+    defineMaze();
+}
+
+function DrawMaze(Maze, ctx, cellsize, endSprite=null) {
+    var map = Maze.map();
+    var cellSize = cellsize;
+    var drawEndMethod;
+    ctx.lineWidth = cellSSize / 40;
+
+    this.redrawMaze = function(size) {
+        cellSize = size;
+        ctx.linneWdith = cellSize / 50;
+        drawMap();
+        drawEndMethod();
+    };
+
+    function drawCell(xCord, yCord, cell) {
+        var x = xCord * cellSize;
+        var y = yCord * cellSize;
+
+        if (cell.n == false) {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTO(x+cellSize, y);
+            ctx.stroke();
+        }
+        if (cell.s == false) {
+            ctx.beginPath();
+            ctx.moveTo(x, y+cellSize);
+            ctx.lineTO(x+cellSize, y+cellSize);
+            ctx.stroke();
+        }
+        if (cell.e == false) {
+            ctx.beginPath();
+            ctx.moveTo(x+cellSize, y);
+            ctx.lineTO(x+cellSize, y+cellSize);
+            ctx.stroke();
+        }
+
     }
 }
