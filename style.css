@@ -10,7 +10,7 @@ html, body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #5772dd;
+    background-color: #7996ec;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -25,17 +25,15 @@ html, body {
     margin: auto;
     border-radius: 10px;
 }
-
 #mazeContainer #mazeCanvas {
     margin: 0;
     display: block;
-    border: solid 2px rgba(0,0,0,0.30);
+    border: solid 2px black;
     height: 400px;
 }
-
 input, select {
     cursor: pointer;
-    background-color: rgba(0,0,0,0.30);
+    background-color: rgba(0, 0, 0, 0.30);
     height: 45px;
     width: 150px;
     padding: 10px;
@@ -48,27 +46,25 @@ input, select {
     text-decoration: none;
     appearance: none;
 }
-
 input:hover, select:hover {
-    background-color: rgba(0,0,0,0.70);
+	background-color: rgba(0, 0, 0, 0.70);
 }
 input:active, select:active {
-    background-color: black;
+	background-color: black;
 }
 input:focus, select:focus {
-    outline: none;
+	outline: none;
 }
 .custom-select {
-    display: inline-black;
+	display: inline-block;
 }
 .custom-select select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background-repeat: no-repeat;
-    background-position: 125 px center;
+    background-position: 125px center;
 }
-
 #Message-Container {
     visibility: hidden;
     color: white;
@@ -80,10 +76,9 @@ input:focus, select:focus {
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(0,0,0,0.30);
+    background-color: rgba(0, 0, 0, 0.30);
     z-index: 1;
 }
-
 #Message-Container #message {
     width: 300px;
     height: 300px;
@@ -93,28 +88,24 @@ input:focus, select:focus {
     margin-left: -150px;
     margin-top: -150px;
 }
-
 #page {
-    text-align: center;
-    height: auto;
-    width: auto;
-    margin: auto;
+	text-align: center;
+	height: auto;
+	width: auto;
+	margin: auto;
 }
-
 #page #menu {
     margin: auto;
     padding: 10px;
     height: 65px;
     box-sizing: border-box;
 }
-
 #page #menu h1 {
     margin: 0;
     margin-bottom: 10px;
     font-weight: 600;
     font-size: 3.2rem;
 }
-
 #page #view {
     position: absolute;
     top: 65px;
@@ -124,15 +115,18 @@ input:focus, select:focus {
     width: 100%;
     height: auto;
 }
-
 .border {
     border: 10px black solid;
     border-radius: 10px;
 }
 
+#instructions {
+    margin-top: 425px;
+}
+ 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 400px) {
-    input, select {
-        width: 120px;
-    }
+	input, select {
+	    width: 120px;
+	}
 }
