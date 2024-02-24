@@ -130,10 +130,6 @@ input:focus, select:focus {
     border-radius: 10px;
 }
 
-#instructions {
-    margin-top: 425px;
-}
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 400px) {
     input, select {
