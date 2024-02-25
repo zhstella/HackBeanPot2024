@@ -616,6 +616,7 @@ function rand(max) {
     }
   };
   document.addEventListener('keydown', function(event) {
+    document.getElementById('explanation').style.display = 'none';  
     // Call the game function when any key is pressed
     game();
   });
@@ -641,6 +642,7 @@ function rand(max) {
     
     // Update the question text
     document.getElementById('questionText').textContent = question.text;
+    document.getElementById('explanation').style.display = 'none';  
   
     // Show the question container
     document.getElementById('questionContainer').style.display = 'block';
@@ -775,7 +777,6 @@ function rand(max) {
     document.getElementById('one').innerHTML = (question.choice1);
     document.getElementById('two').innerHTML = (question.choice2);
     document.getElementById('three').innerHTML = (question.choice3);
-  
     if (selectedAnswer === question.correctAnswer) {
       // Correct answer
       console.log('Correct!');
@@ -797,6 +798,7 @@ function rand(max) {
       document.getElementById('explanation').style.display = 'block';
       window.freezePlayer = true; // You may choose to handle incorrect answers differently
     }
+    
 }
 
 
