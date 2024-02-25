@@ -261,9 +261,7 @@ function rand(max) {
         ctx.stroke();
       }
       if (cell.isTaskPoint) {
-        // // 如果是任务点，使用不同的颜色或图像表示
-        // ctx.fillStyle = "red";  // 可以根据需要修改颜色
-        // ctx.fillRect(x, y, cellSize, cellSize);
+        // If it is a task point, use an image to represent
         let img = new Image();
         img.onload = function() {
           ctx.drawImage(img, x, y, cellSize, cellSize);
@@ -416,6 +414,10 @@ function rand(max) {
     function check(e) {
       var cell = map[cellCoords.x][cellCoords.y];
       moves++;
+      if (cell.isTaskPoint) {
+        displayQuestion();
+        cell.isTaskPoint = false;
+      }
       switch (e.keyCode) {
         case 65:
         case 37: // west
@@ -429,7 +431,7 @@ function rand(max) {
           }
           break;
         case 87:
-        case 38: // north
+        case 38: // north1
           if (cell.n == true) {
             removeSprite(cellCoords);
             cellCoords = {
@@ -604,3 +606,43 @@ function rand(max) {
       document.getElementById("mazeContainer").style.opacity = "100";
     }
   }
+
+function displayQuestion() {
+  // Assume questions is an array of objects with 'text' and 'correctAnswer' properties
+  var question = getRandomQuestion();
+  
+  // Update the question text
+  document.getElementById('questionText').textContent = question.text;
+
+  // Show the question container
+  document.getElementById('questionContainer').style.display = 'block';
+}
+
+function getRandomQuestion() {
+  // Implement logic to get a random question from your set of questions
+  // Example:
+  var questions = [
+    { text: 'What is the capital of France?', correctAnswer: 'Paris' },
+    { text: 'Which planet is known as the Red Planet?', correctAnswer: 'Mars' },
+    // Add more questions as needed
+  ];
+
+  var randomIndex = Math.floor(Math.random() * questions.length);
+  return questions[randomIndex];
+}
+
+function checkAnswer(selectedAnswer) {
+  var question = getRandomQuestion(); // Retrieve the current question
+
+  if (selectedAnswer === question.correctAnswer) {
+    // Correct answer
+    console.log('Correct!');
+
+    // Hide the question container
+    document.getElementById('questionContainer').style.display = 'none';
+  } else {
+    // Incorrect answer
+    console.log('Incorrect. Try again!');
+    // You may choose to handle incorrect answers differently
+  }
+}
