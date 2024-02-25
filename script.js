@@ -213,7 +213,7 @@ function rand(max) {
     }
     
     function addTask() {
-      for (let i = 0; i < 2; i++) {
+      for (let i = 0; i < 10; i++) {
         const taskPointX = rand(width);
         const taskPointY = rand(height);
         mazeMap[taskPointX][taskPointY].isTaskPoint = true;
@@ -644,6 +644,11 @@ function rand(max) {
   
     // Show the question container
     document.getElementById('questionContainer').style.display = 'block';
+    document.getElementById('questionText').innerHTML = (question.text);
+    document.getElementById('one').innerHTML = (question.Answer1);
+    document.getElementById('two').innerHTML = (question.Answer2);
+    document.getElementById('three').innerHTML = (question.Answer3);
+    document.getElementById('four').innerHTML = (question.Answer4);
 
     window.freezePlayer = true;
   }
@@ -652,17 +657,24 @@ function rand(max) {
     // Implement logic to get a random question from your set of questions
     // Example:
     var questions = [
-      { text: 'What is the capital of France?', correctAnswer: 'Paris' },
-      { text: 'Which planet is known as the Red Planet?', correctAnswer: 'Mars' },
-      // Add more questions as needed
+        { text: 'What is the capital of France?', correctAnswer: 'Answer1', Answer1: 'Paris', Answer2: 'Berlin', Answer3: 'Rome', Answer4: 'Madrid', info: 'The capital of France is indeed Paris' },
+        { text: 'Which planet is known as the Red Planet?', correctAnswer: 'Answer1', Answer1: 'Mars', Answer2: 'Venus', Answer3: 'Mercury', Answer4: 'Earth', info: 'Mars is known as the Red Planet' },
+        // Add more questions as needed
     ];
-  
+
     var randomIndex = Math.floor(Math.random() * questions.length);
     return questions[randomIndex];
-  }
+}
+
   
   function checkAnswer(selectedAnswer) {
     var question = getRandomQuestion(); // Retrieve the current question
+
+    document.getElementById('questionText').innerHTML = (question.text);
+    document.getElementById('one').innerHTML = (question.Answer1);
+    document.getElementById('two').innerHTML = (question.Answer2);
+    document.getElementById('three').innerHTML = (question.Answer3);
+    document.getElementById('four').innerHTML = (question.Answer4);
   
     if (selectedAnswer === question.correctAnswer) {
       // Correct answer
@@ -672,9 +684,24 @@ function rand(max) {
 
       // Hide the question container
       document.getElementById('questionContainer').style.display = 'none';
+
+      // Show the explanation
+      document.getElementById('explanation').style.display = 'block';
+      document.getElementById('explainP').innerHTML = 'You are correct';
+      document.getElementById('again').style.display = 'none';
     } else {
       // Incorrect answer
-      console.log('Incorrect. Try again!');
-      // You may choose to handle incorrect answers differently
+      document.getElementById('questionContainer').style.display = 'none';
+      document.getElementById('again').style.display = 'block';
+      document.getElementById('explainP').innerHTML = (question.info);
+      document.getElementById('explanation').style.display = 'block';
+      window.freezePlayer = true; // You may choose to handle incorrect answers differently
     }
-  }
+}
+
+
+function tryAgain() {
+  // Reset the UI to allow the user to try again
+  document.getElementById('questionContainer').style.display = 'block';
+  document.getElementById('explanation').style.display = 'none';
+}

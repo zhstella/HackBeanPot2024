@@ -39,10 +39,15 @@
         <canvas id="mazeCanvas" class="border" height="1100" width="1100"></canvas>
       </div>
       <div id="questionContainer" style="display: none;">
-        <p id="questionText">What is the capital of France?</p>
-        <button onclick="checkAnswer('Paris')">Paris</button>
-        <button onclick="checkAnswer('Berlin')">Berlin</button>
-        <button onclick="checkAnswer('Rome')">Rome</button>
+        <p id="questionText"></p>
+        <button onclick="checkAnswer('Answer1')" id="one"></button>
+        <button onclick="checkAnswer('Answer2')" id="two"></button>
+        <button onclick="checkAnswer('Answer3')" id="three"></button>
+        <button onclick="checkAnswer('Answer4')" id="four"></button>
+      </div>
+      <div id="explanation" style="display:none">
+        <p id="explainP">You are correct</p>
+        <button id="again" onclick="tryAgain()" style="display:none">Try again</button>
       </div>
       
     </div>
