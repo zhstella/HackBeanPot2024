@@ -205,9 +205,17 @@ function rand(max) {
       }
     }
     
-    
+    function addTask() {
+      for (let i = 0; i < 10; i++) {
+        const taskPointX = rand(width);
+        const taskPointY = rand(height);
+        mazeMap[taskPointX][taskPointY].isTaskPoint = true;
+      } 
+    }
+
     genMap();
     defineStartEnd();
+    addTask();
     defineMaze();
   }
   
@@ -251,6 +259,11 @@ function rand(max) {
         ctx.moveTo(x, y);
         ctx.lineTo(x, y + cellSize);
         ctx.stroke();
+      }
+      if (cell.isTaskPoint) {
+        // 如果是任务点，使用不同的颜色或图像表示
+        ctx.fillStyle = "red";  // 可以根据需要修改颜色
+        ctx.fillRect(x, y, cellSize, cellSize);
       }
     }
   
