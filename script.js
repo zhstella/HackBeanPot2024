@@ -204,7 +204,8 @@ function rand(max) {
           break;
       }
     }
-  
+    
+    
     genMap();
     defineStartEnd();
     defineMaze();
