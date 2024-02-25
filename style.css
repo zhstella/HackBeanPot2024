@@ -129,7 +129,7 @@ input:focus, select:focus {
 }
 
 #instructions {
-    margin-top: 50vh;
+    margin-top: 50vh; 
     color: rgb(101, 206, 178);
     font-size: 25px;
     font-family: "Rubik Bubbles", system-ui;
