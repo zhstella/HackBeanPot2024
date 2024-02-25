@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&family=Rubik+Glitch+Pop&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&family=Rubik+Bubbles&family=Rubik+Glitch+Pop&display=swap');
 
 html, body {
     width: 100vw;
@@ -41,15 +42,18 @@ input, select {
     background-color: rgba(0, 0, 0, 0.30);
     height: 45px;
     width: 150px;
-    padding: 10px;
+    padding: 3px;
     border: none;
     border-radius: 5px;
     color: rgb(255, 255, 255);
     display: inline-block;
-    font-size: 15px;
+    font-size: 25px;
     text-align: center;
     text-decoration: none;
     appearance: none;
+    font-family: "Rubik Bubbles", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 input:hover, select:hover {
 	background-color: rgba(0, 0, 0, 0.70);
@@ -127,9 +131,9 @@ input:focus, select:focus {
 
 #instructions {
     margin-top: 520px;
-    color: rgb(0, 0, 0);
+    color: rgb(101, 206, 178);
     font-size: 25px;
-    font-family: "Rubik Glitch Pop", system-ui;
+    font-family: "Rubik Bubbles", system-ui;
     font-weight: 400;
     font-style: normal;
 }
