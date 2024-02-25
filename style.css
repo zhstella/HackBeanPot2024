@@ -31,7 +31,7 @@ html, body {
     border-radius: 10px;
 }
 #mazeContainer #mazeCanvas {
-    margin-top: 15vh;
+    margin: 0;
     display: block;
     border: solid 2px rgb(0, 0, 0);
     height: 500px;
@@ -103,7 +103,6 @@ input:focus, select:focus {
 	margin: auto;
 }
 #page #menu {
-    margin-bottom: 20vh;
     margin: auto;
     padding: 10px;
     height: 65px;
@@ -130,7 +129,7 @@ input:focus, select:focus {
 }
 
 #instructions {
-    margin-top: 70vh;
+    margin-top: 50vh;
     color: rgb(101, 206, 178);
     font-size: 25px;
     font-family: "Rubik Bubbles", system-ui;
@@ -146,6 +145,3 @@ input:focus, select:focus {
 }
 
 
-/* #questionContainer{
-    padding: 50vh;
-} */
