@@ -635,10 +635,10 @@ function rand(max) {
       document.getElementById("mazeContainer").style.opacity = "100";
     }
   }
-
+var question;
   function displayQuestion() {
     // Assume questions is an array of objects with 'text' and 'correctAnswer' properties
-    var question = getRandomQuestion();
+    question = getRandomQuestion();
     
     // Update the question text
     document.getElementById('questionText').textContent = question.text;
@@ -771,13 +771,13 @@ function rand(max) {
 
   
   function checkAnswer(selectedAnswer) {
-    var question = getRandomQuestion(); // Retrieve the current question
 
     document.getElementById('questionText').innerHTML = (question.text);
     document.getElementById('one').innerHTML = (question.choice1);
     document.getElementById('two').innerHTML = (question.choice2);
     document.getElementById('three').innerHTML = (question.choice3);
     if (selectedAnswer === question.correctAnswer) {
+
       // Correct answer
       console.log('Correct!');
   
