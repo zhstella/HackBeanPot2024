@@ -645,10 +645,9 @@ function rand(max) {
     // Show the question container
     document.getElementById('questionContainer').style.display = 'block';
     document.getElementById('questionText').innerHTML = (question.text);
-    document.getElementById('one').innerHTML = (question.Answer1);
-    document.getElementById('two').innerHTML = (question.Answer2);
-    document.getElementById('three').innerHTML = (question.Answer3);
-    document.getElementById('four').innerHTML = (question.Answer4);
+    document.getElementById('one').innerHTML = (question.choice1);
+    document.getElementById('two').innerHTML = (question.choice2);
+    document.getElementById('three').innerHTML = (question.choice3);
 
     window.freezePlayer = true;
   }
@@ -657,8 +656,110 @@ function rand(max) {
     // Implement logic to get a random question from your set of questions
     // Example:
     var questions = [
-        { text: 'What is the capital of France?', correctAnswer: 'Answer1', Answer1: 'Paris', Answer2: 'Berlin', Answer3: 'Rome', Answer4: 'Madrid', info: 'The capital of France is indeed Paris' },
-        { text: 'Which planet is known as the Red Planet?', correctAnswer: 'Answer1', Answer1: 'Mars', Answer2: 'Venus', Answer3: 'Mercury', Answer4: 'Earth', info: 'Mars is known as the Red Planet' },
+        { text: '3 out of every 7 people on the planet depend on _____ as their main source of protein',
+        choice1: 'Beef',
+        choice2: 'Seafood',
+        choice3: 'Plants', 
+        correctAnswer: 'choice2', 
+        info: 'More than 3 billion people on the planet depend on seafood — fish, clams, crabs, shrimp, etc. — for their nutrition and food security.' 
+      },
+      
+      { text: 'As the ocean warms and sea level rises, some low-lying lands may see _____.', 
+        choice1: 'Increased tourism',
+        choice2: 'loss of coastlines',
+        choice3: 'More beachfront',
+        correctAnswer: 'choice2',
+        info: 'Warmer waters and higher seas destroy reefs and beaches, causing the disappearance of coastlines and forcing the potential relocation of entire island populations.'
+      },
+      
+      { text: 'About 26% of all carbon dioxide released by human activity over the last decade was absorbed by _____.',
+        choice1: 'Tall people',
+        choice2: 'Trees',
+        choice3: 'The ocean',
+        correctAnswer: 'choice3',
+        info: 'The absorption of carbon dioxide from Earth’s atmosphere by the world’s oceans has prevented global warming from worsening faster than it has.'
+      },
+
+      { text: 'More than 1/2 of our breathable oxygen comes from the ocean. True or false.',
+        choice1: 'True',
+        choice2: 'False',
+        choice3: 'Not sure',
+        correctAnswer: 'choice1',
+        info: 'The ocean provides just over half our breathable oxygen, and most of that is provided by microscopic marine plants called phytoplankton.'
+      },
+
+      { text: 'As the ocean warms, it can help absorb more carbon from the atmosphere. True or false.',
+        choice1: 'True',
+        choice2: 'False',
+        choice3: 'Not sure',
+        correctAnswer: 'choice2',
+        info: 'A warming ocean is actually less efficient at absorbing carbon from the atmosphere. That’s bad news, because the warmer the ocean gets, the more carbon will remain in the atmosphere, warming the planet even more quickly.'
+      },
+
+      { text: 'Every _____ a garbage truck full of plastic is dumped into the ocean.',
+        choice1: 'Minute',
+        choice2: 'Hour',
+        choice3: 'Day',
+        correctAnswer: 'choice1',
+        info: 'About 8 million metric tons of plastic are thrown into the ocean every year, which is like dumping a garbage truck full of plastic into the ocean every minute for an entire year!'
+      },
+
+      { text: 'There is more microplastic in the ocean than there are stars in the milky way.',
+        choice1: 'True',
+        choice2: 'False',
+        choice3: 'Not sure',
+        correctAnswer: 'choice1',
+        info: 'As much as 50 trillion microplastic particles litter our ocean, while the milky way galaxy has about 100-400 billion stars.'
+      },
+
+      { text: 'What is the most common trash found on beaches?',
+        choice1: 'Medical waste',
+        choice2: 'Wooden debris',
+        choice3: 'Disposable plastics',
+        correctAnswer: 'choice3',
+        info: 'About 80% of the trash found on beaches comes from single-use disposable plastics, such as bottles, utensils, straws and food wrappers. In addition to being an eyesore, plastic in the environment can pose a deadly threat to marine animals.'
+      },
+
+      { text: 'Each year, how many tons of plastics the world produces and how many tons of them enter the ocean?',
+        choice1: '180, 10',
+        choice2: '280, 12',
+        choice3: '380, 14',
+        correctAnswer: 'choice3',
+        info: 'The world produces over 380 million tons of plastic every year. More than 14 million tons of plastic enter the ocean, outpacing efforts to remove it.'
+      },
+
+      { text: 'Why is plastic harmful in the environment, especially in the oceans?',
+        choice1: 'It biodegrades quickly',
+        choice2: 'It lasts forever',
+        choice3: 'It is easy to recycle',
+        correctAnswer: 'choice2',
+        info: 'Plastic does not biodegrade easily and can persist in the environment for a long time, posing a persistent threat to marine animals. Choosing environmentally friendly alternatives is crucial for marine ecosystem protection.'
+      },
+
+      { text: 'How are microplastics formed?',
+        choice1: 'Chemical reactions',
+        choice2: 'Natural processes',
+        choice3: 'Break apart from larger plastics',
+        correctAnswer: 'choice3',
+        info: 'Microplastics are tiny pieces that result from the gradual breakdown of larger plastic objects. Despite their size, they have significant impacts on marine life.'
+      },
+
+      { text: 'Where have scientists found large quantities of microplastics?',
+        choice1: 'Every environment',
+        choice2: 'Urban areas',
+        choice3: 'Deep ocean',
+        correctAnswer: 'choice1',
+        info: 'Scientists have found large quantities of microplastics in various environments, ranging from urban areas to remote mountainous regions, underscoring the widespread contamination.'
+      },
+
+      { text: 'What actions can individuals take to reduce the impact of toxic chemicals on the environment?',
+        choice1: 'Avoid local products',
+        choice2: 'Use reusable cloth bags',
+        choice3: 'Irresponsible waste disposal',
+        correctAnswer: 'choice2',
+        info: 'Individuals can reduce the impact of toxic chemicals by choosing eco-friendly products, using reusable bags, and being mindful of their choices to promote a healthier marine environment.'
+      }
+
         // Add more questions as needed
     ];
 
@@ -671,10 +772,9 @@ function rand(max) {
     var question = getRandomQuestion(); // Retrieve the current question
 
     document.getElementById('questionText').innerHTML = (question.text);
-    document.getElementById('one').innerHTML = (question.Answer1);
-    document.getElementById('two').innerHTML = (question.Answer2);
-    document.getElementById('three').innerHTML = (question.Answer3);
-    document.getElementById('four').innerHTML = (question.Answer4);
+    document.getElementById('one').innerHTML = (question.choice1);
+    document.getElementById('two').innerHTML = (question.choice2);
+    document.getElementById('three').innerHTML = (question.choice3);
   
     if (selectedAnswer === question.correctAnswer) {
       // Correct answer
