@@ -369,6 +369,7 @@ function rand(max) {
   }
   
   function Player(maze, c, _cellsize, onComplete, sprite = null) {
+      var collectedTrashBags = 0;
     var ctx = c.getContext("2d");
     var drawSprite;
     var moves = 0;
@@ -427,13 +428,27 @@ function rand(max) {
         cellSize - offsetRight
       );
       if (map[coord.x][coord.y].isTaskPoint) {
+        // Increment the collected trash bags count
+        collectedTrashBags++;
+        
+        // Check if all trash bags have been collected
+        if (collectedTrashBags === 10) { // Assuming there are 10 trash bags
+            // Display a message or perform any action when all trash bags are collected
+            console.log("Congratulations! You collected all the trash bags.");
+        }
+        
+        // Hide the question container
+        document.getElementById('questionContainer').style.display = 'none';
+    }
+      if (map[coord.x][coord.y].isTaskPoint) {
         displayQuestion();
     
         map[coord.x][coord.y].isTaskPoint = false;
       }
-      if (coord.x === maze.endCoord().x && coord.y === maze.endCoord().y) {
-        onComplete(moves);
-        player.unbindKeyDown();
+     if (coord.x === maze.endCoord().x && coord.y === maze.endCoord().y && collectedTrashBags === 10) {
+            // Check if all trash bags are collected before reaching the submarine
+            onComplete(moves);
+            player.unbindKeyDown();
       }
     }
   //   function openPopup() {
