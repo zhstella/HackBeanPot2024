@@ -261,9 +261,17 @@ function rand(max) {
         ctx.stroke();
       }
       if (cell.isTaskPoint) {
-        // 如果是任务点，使用不同的颜色或图像表示
-        ctx.fillStyle = "red";  // 可以根据需要修改颜色
-        ctx.fillRect(x, y, cellSize, cellSize);
+        // // 如果是任务点，使用不同的颜色或图像表示
+        // ctx.fillStyle = "red";  // 可以根据需要修改颜色
+        // ctx.fillRect(x, y, cellSize, cellSize);
+        let img = new Image();
+        img.onload = function() {
+          ctx.drawImage(img, x, y, cellSize, cellSize);
+        };
+        img.src = "/trash.png";
+
+        // 消除任务点的垃圾图片
+        // ctx.clearRect(x, y, cellSize, cellSize);
       }
     }
   
