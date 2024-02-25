@@ -38,10 +38,28 @@ function rand(max) {
     virtCanvas.remove();
     return spriteOutput;
   }
+
+//   function displayVictoryMess() {
+//     // Record the end time when the user finishes the maze
+//     var endTime = Date.now(); // or new Date().getTime() for compatibility
+//     // Calculate elapsed time in milliseconds
+//     var elapsedTime = endTime - startTime;
+//     // Convert milliseconds to seconds for easier reading
+//     var elapsedSeconds = elapsedTime / 1000;
+//     // Display the victory message along with the elapsed time
+//     alert("Congratulations! You finished the maze in " + elapsedSeconds + " seconds.");
+//     // Your existing displayVictoryMess() code...
+// }
   
   function displayVictoryMess(moves) {
-    document.getElementById("moves").innerHTML = "You Moved " + moves + " Steps.";
+    var endTime = Date.now(); // or new Date().getTime() for compatibility
+    // Calculate elapsed time in milliseconds
+    var elapsedTime = endTime - startTime;
+    // Convert milliseconds to seconds for easier reading
+    var elapsedSeconds = elapsedTime / 1000;
     toggleVisablity("Message-Container");  
+    document.getElementById("moves").innerHTML = "You Moved " + moves + " Steps, and became a sustainability expert in " + elapsedSeconds + " seconds";
+
   }
   
   function toggleVisablity(id) {
@@ -616,11 +634,14 @@ function rand(max) {
     }
   };
   document.addEventListener('keydown', function(event) {
-    document.getElementById('explanation').style.display = 'none';  
     // Call the game function when any key is pressed
     game();
   });
+  var startTime;
   function makeMaze() {
+    startTime = Date.now();
+    window.freezePlayer = false;
+    document.getElementById('questionContainer').style.display = 'none';
     if (player != undefined) {
       player.unbindKeyDown();
       player = null;
@@ -635,6 +656,7 @@ function rand(max) {
       document.getElementById("mazeContainer").style.opacity = "100";
     }
   }
+
 var question;
   function displayQuestion() {
     // Assume questions is an array of objects with 'text' and 'correctAnswer' properties
