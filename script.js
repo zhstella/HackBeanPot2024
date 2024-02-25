@@ -1,3 +1,10 @@
+
+
+function game() {
+  const instruction = document.getElementById('instructions');
+  instruction.style.display = "none";
+}
+
 function rand(max) {
     return Math.floor(Math.random() * max);
   }
@@ -206,7 +213,7 @@ function rand(max) {
     }
     
     function addTask() {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 2; i++) {
         const taskPointX = rand(width);
         const taskPointY = rand(height);
         mazeMap[taskPointX][taskPointY].isTaskPoint = true;
@@ -431,6 +438,9 @@ function rand(max) {
     }
   
     function check(e) {
+      if (window.freezePlayer) {
+        return
+      }
       var cell = map[cellCoords.x][cellCoords.y];
       moves++;
       switch (e.keyCode) {
@@ -605,7 +615,10 @@ function rand(max) {
       player.redrawPlayer(cellSize);
     }
   };
-  
+  document.addEventListener('keydown', function(event) {
+    // Call the game function when any key is pressed
+    game();
+  });
   function makeMaze() {
     if (player != undefined) {
       player.unbindKeyDown();
@@ -631,6 +644,8 @@ function rand(max) {
   
     // Show the question container
     document.getElementById('questionContainer').style.display = 'block';
+
+    window.freezePlayer = true;
   }
   
   function getRandomQuestion() {
@@ -653,6 +668,8 @@ function rand(max) {
       // Correct answer
       console.log('Correct!');
   
+      window.freezePlayer = false;
+
       // Hide the question container
       document.getElementById('questionContainer').style.display = 'none';
     } else {

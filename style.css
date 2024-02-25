@@ -34,7 +34,7 @@ html, body {
     margin: 0;
     display: block;
     border: solid 2px rgb(0, 0, 0);
-    height: 500px;
+    height: 70vh;
 }
 input, select {
     cursor: pointer;
@@ -129,7 +129,7 @@ input:focus, select:focus {
 }
 
 #instructions {
-    margin-top: 50vh; 
+    margin-top: 75vh; 
     color: rgb(101, 206, 178);
     font-size: 25px;
     font-family: "Rubik Bubbles", system-ui;
@@ -143,5 +143,6 @@ input:focus, select:focus {
 	    width: 120px;
 	}
 }
+
 
 
